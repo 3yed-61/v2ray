@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> v2ray</title>
+  <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Vazir', sans-serif;
+    }
+
+    .center-text {
+      text-align: center;
+    }
+
+    .copy-button {
+      font-size: 1rem;
+      padding: 0.3rem 1rem;
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin-top: 0.5rem;
+      opacity: 0.7;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .copy-button:hover {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    .right-align {
+      text-align: right;
+    }
+
+    .card {
+      border-radius: 15px;
+      border: 2px solid #ccc;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      font-family: 'Vazir', sans-serif;
+    }
+
+    .form-select {
+      font-size: 1.1rem;
+      text-align-last: right;
+    }
+
+    #get-config {
+      font-size: 1.2rem;
+      padding: 0.5rem 2rem;
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    #get-config:hover {
+      transform: scale(1.05);
+    }
+
+    .main-title {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      font-family: 'Vazir', sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <header class="card-header">
+          <h5 class="card-title center-text">فیلتر کردن</h5>
+        </header>
+        <div class="card-body">
+          <select id="server-select" class="form-select mb-3 right-align" aria-label="انتخاب سرور">
+            <option value="server1"selected>سرور ۱</option>
+            <option value="server2">سرور ۲</option>
+            <option value="server3">سرور ۳</option>         
+          </select>
+          <select id="protocol-select" class="form-select mb-3 right-align" aria-label="انتخاب پروتکل">
+            <option value="all" selected>همه پروتکل‌ها</option>
+            <option value="vless">vless</option>
+            <option value="vmess">vmess</option>
+            <option value="trojan">trojan</option>
+            <option value="ss">shadowsocks</option>
+          </select>
+          <select id="country-select" class="form-select mb-3 right-align" aria-label="انتخاب کشور">
+            <option value="all" selected>همه کشورها</option>
+			<option value="Afghanistan">افغانستان 🇦🇫 Afghanistan</option>
+			<option value="Albania">آلبانیا 🇦🇱 Albania</option>
+			<option value="Algeria">الجزایر 🇩🇿 Algeria</option>
+			<option value="Andorra">آندورا 🇦🇩 Andorra</option>
+			<option value="Angola">آنگولا 🇦🇴 Angola</option>
+			<option value="Antigua and Barbuda">آنتیگوا و باربودا 🇦🇬 Antigua and Barbuda</option>
+			<option value="Argentina">آرژانتین 🇦🇷 Argentina</option>
+			<option value="Armenia">ارمنستان 🇦🇲 Armenia</option>
+			<option value="Australia">استرالیا 🇦🇺 Australia</option>
+			<option value="Austria">اتریش 🇦🇹 Austria</option>
+			<option value="Azerbaijan">آذربایجان 🇦🇿 Azerbaijan</option>
+			<option value="Bahamas">باهاما 🇧🇸 Bahamas</option>
+			<option value="Bahrain">بحرین 🇧🇭 Bahrain</option>
+			<option value="Bangladesh">بنگلادش 🇧🇩 Bangladesh</option>
+			<option value="Barbados">باربادوس 🇧🇧 Barbados</option>
+			<option value="Belarus">بلاروس 🇧🇾 Belarus</option>
+			<option value="Belgium">بلژیک 🇧🇪 Belgium</option>
+			<option value="Belize">بلیز 🇧🇿 Belize</option>
+			<option value="Benin">بنین 🇧🇯 Benin</option>
+			<option value="Bhutan">بوتان 🇧🇹 Bhutan</option>
+			<option value="Bolivia">بولیوی 🇧🇴 Bolivia</option>
+			<option value="Bosnia and Herzegovina">بوسنی و هرزگوین 🇧🇦 Bosnia and Herzegovina</option>
+			<option value="Botswana">بوتسوانا 🇧🇼 Botswana</option>
+			<option value="Brazil">برزیل 🇧🇷 Brazil</option>
+			<option value="Brunei">برونئی 🇧🇳 Brunei</option>
+			<option value="Bulgaria">بلغارستان 🇧🇬 Bulgaria</option>
+			<option value="Burkina Faso">بورکینافاسو 🇧🇫 Burkina Faso</option>
+			<option value="Burundi">بوروندی 🇧🇮 Burundi</option>
+			<option value="Cabo Verde">کیپ ورد 🇨🇻 Cabo Verde</option>
+			<option value="Cambodia">کامبوج 🇰🇭 Cambodia</option>
+			<option value="Cameroon">کامرون 🇨🇲 Cameroon</option>
+			<option value="Canada">کانادا 🇨🇦 Canada</option>
+			<option value="Central African Republic">جمهوری آفریقای مرکزی 🇨🇫 Central African Republic</option>
+			<option value="Chad">چاد 🇹🇩 Chad</option>
+			<option value="Chile">شیلی 🇨🇱 Chile</option>
+			<option value="China">چین 🇨🇳 China</option>
+			<option value="Colombia">کلمبیا 🇨🇴 Colombia</option>
+			<option value="Comoros">کومور 🇰🇲 Comoros</option>
+			<option value="Congo (Congo-Brazzaville)">کنگو (برازاویل) 🇨🇬 Congo (Congo-Brazzaville)</option>
+			<option value="Costa Rica">کاستاریکا 🇨🇷 Costa Rica</option>
+			<option value="Croatia">کرواسی 🇭🇷 Croatia</option>
+			<option value="Cuba">کوبا 🇨🇺 Cuba</option>
+			<option value="Cyprus">قبرس 🇨🇾 Cyprus</option>
+			<option value="Czechia (Czech Republic)">جمهوری چک 🇨🇿 Czechia (Czech Republic)</option>
+			<option value="Denmark">دانمارک 🇩🇰 Denmark</option>
+			<option value="Djibouti">جیبوتی 🇩🇯 Djibouti</option>
+			<option value="Dominica">دومینیکا 🇩🇲 Dominica</option>
+			<option value="Dominican Republic">جمهوری دومینیکن 🇩🇴 Dominican Republic</option>
+			<option value="Ecuador">اکوادور 🇪🇨 Ecuador</option>
+			<option value="Egypt">مصر 🇪🇬 Egypt</option>
+			<option value="El Salvador">السالوادور 🇸🇻 El Salvador</option>
+			<option value="Equatorial Guinea">گینه استوایی 🇬🇶 Equatorial Guinea</option>
+			<option value="Eritrea">اریتره 🇪🇷 Eritrea</option>
+			<option value="Estonia">استونی 🇪🇪 Estonia</option>
+			<option value="Eswatini (fmr. "Swaziland")">اسواتینی 🇸🇿 Eswatini (fmr. "Swaziland")</option>
+			<option value="Ethiopia">اتیوپی 🇪🇹 Ethiopia</option>
+			<option value="Fiji">فیجی 🇫🇯 Fiji</option>
+			<option value="Finland">فنلاند 🇫🇮 Finland</option>
+			<option value="France">فرانسه 🇫🇷 France</option>
+			<option value="Gabon">گابون 🇬🇦 Gabon</option>
+			<option value="Gambia">گامبیا 🇬🇲 Gambia</option>
+			<option value="Georgia">گرجستان 🇬🇪 Georgia</option>
+			<option value="Germany">آلمان 🇩🇪 Germany</option>
+			<option value="Ghana">غنا 🇬🇭 Ghana</option>
+			<option value="Greece">یونان 🇬🇷 Greece</option>
+			<option value="Grenada">گرنادا 🇬🇩 Grenada</option>
+			<option value="Guatemala">گواتمالا 🇬🇹 Guatemala</option>
+			<option value="Guinea">گینه 🇬🇳 Guinea</option>
+			<option value="Guinea-Bissau">گینه بیسائو 🇬🇼 Guinea-Bissau</option>
+			<option value="Guyana">گویان 🇬🇾 Guyana</option>
+			<option value="Haiti">هائیتی 🇭🇹 Haiti</option>
+			<option value="Holy See">واتیکان 🇻🇦 Holy See</option>
+			<option value="Honduras">هندوراس 🇭🇳 Honduras</option>
+			<option value="Hungary">مجارستان 🇭🇺 Hungary</option>
+			<option value="Iceland">ایسلند 🇮🇸 Iceland</option>
+			<option value="India">هند 🇮🇳 India</option>
+			<option value="Indonesia">اندونزی 🇮🇩 Indonesia</option>
+			<option value="Iran">ایران 🇮🇷 Iran</option>
+			<option value="Iraq">عراق 🇮🇶 Iraq</option>
+			<option value="Ireland">ایرلند 🇮🇪 Ireland</option>
+			<option value="Israel">اسرائیل 🇮🇱 Israel</option>
+			<option value="Italy">ایتالیا 🇮🇹 Italy</option>
+			<option value="Jamaica">جامائیکا 🇯🇲 Jamaica</option>
+			<option value="Japan">ژاپن 🇯🇵 Japan</option>
+			<option value="Jordan">اردن 🇯🇴 Jordan</option>
+			<option value="Kazakhstan">قزاقستان 🇰🇿 Kazakhstan</option>
+			<option value="Kenya">کنیا 🇰🇪 Kenya</option>
+			<option value="Kiribati">کیریباتی 🇰🇮 Kiribati</option>
+			<option value="Kuwait">کویت 🇰🇼 Kuwait</option>
+			<option value="Kyrgyzstan">قرقیزستان 🇰🇬 Kyrgyzstan</option>
+			<option value="Laos">لائوس 🇱🇦 Laos</option>
+			<option value="Latvia">لتونی 🇱🇻 Latvia</option>
+			<option value="Lebanon">لبنان 🇱🇧 Lebanon</option>
+			<option value="Lesotho">لسوتو 🇱🇸 Lesotho</option>
+			<option value="Liberia">لیبریا 🇱🇷 Liberia</option>
+			<option value="Libya">لیبی 🇱🇾 Libya</option>
+			<option value="Liechtenstein">لیختن‌اشتاین 🇱🇮 Liechtenstein</option>
+			<option value="Lithuania">لیتوانی 🇱🇹 Lithuania</option>
+			<option value="Luxembourg">لوکزامبورگ 🇱🇺 Luxembourg</option>
+			<option value="Madagascar">ماداگاسکار 🇲🇬 Madagascar</option>
+			<option value="Malawi">مالاوی 🇲🇼 Malawi</option>
+			<option value="Malaysia">مالزی 🇲🇾 Malaysia</option>
+			<option value="Maldives">مالدیو 🇲🇻 Maldives</option>
+			<option value="Mali">مالی 🇲🇱 Mali</option>
+			<option value="Malta">مالت 🇲🇹 Malta</option>
+			<option value="Marshall Islands">جزایر مارشال 🇲🇭 Marshall Islands</option>
+			<option value="Mauritania">موریتانی 🇲🇷 Mauritania</option>
+			<option value="Mauritius">موریس 🇲🇺 Mauritius</option>
+			<option value="Mexico">مکزیک 🇲🇽 Mexico</option>
+			<option value="Micronesia">میکرونزی 🇫🇲 Micronesia</option>
+			<option value="Moldova">مولداوی 🇲🇩 Moldova</option>
+			<option value="Monaco">موناکو 🇲🇨 Monaco</option>
+			<option value="Mongolia">مغولستان 🇲🇳 Mongolia</option>
+			<option value="Montenegro">مونته‌نگرو 🇲🇪 Montenegro</option>
+			<option value="Morocco">مراکش 🇲🇦 Morocco</option>
+			<option value="Mozambique">موزامبیک 🇲🇿 Mozambique</option>
+			<option value="Myanmar">میانمار 🇲🇲 Myanmar</option>
+			<option value="Namibia">نامیبیا 🇳🇦 Namibia</option>
+			<option value="Nauru">نائورو 🇳🇷 Nauru</option>
+			<option value="Nepal">نپال 🇳🇵 Nepal</option>
+			<option value="Netherlands">هلند 🇳🇱 Netherlands</option>
+			<option value="New Zealand">نیوزیلند 🇳🇿 New Zealand</option>
+			<option value="Nicaragua">نیکاراگوئه 🇳🇮 Nicaragua</option>
+			<option value="Niger">نیجر 🇳🇪 Niger</option>
+			<option value="Nigeria">نیجریه 🇳🇬 Nigeria</option>
+			<option value="North Korea">کره شمالی 🇰🇵 North Korea</option>
+			<option value="North Macedonia">مقدونیه شمالی 🇲🇰 North Macedonia</option>
+			<option value="Norway">نروژ 🇳🇴 Norway</option>
+			<option value="Oman">عمان 🇴🇲 Oman</option>
+			<option value="Pakistan">پاکستان 🇵🇰 Pakistan</option>
+			<option value="Palau">پالائو 🇵🇼 Palau</option>
+			<option value="Palestine State">فلسطین 🇵🇸 Palestine State</option>
+			<option value="Panama">پاناما 🇵🇦 Panama</option>
+			<option value="Papua New Guinea">پاپوا گینه نو 🇵🇬 Papua New Guinea</option>
+			<option value="Paraguay">پاراگوئه 🇵🇾 Paraguay</option>
+			<option value="Peru">پرو 🇵🇪 Peru</option>
+			<option value="Philippines">فیلیپین 🇵🇭 Philippines</option>
+			<option value="Poland">لهستان 🇵🇱 Poland</option>
+			<option value="Portugal">پرتغال 🇵🇹 Portugal</option>
+			<option value="Qatar">قطر 🇶🇦 Qatar</option>
+			<option value="Romania">رومانی 🇷🇴 Romania</option>
+			<option value="Russia">روسیه 🇷🇺 Russia</option>
+			<option value="Rwanda">رواندا 🇷🇼 Rwanda</option>
+			<option value="Saint Kitts and Nevis">سنت کیتس و نویس 🇰🇳 Saint Kitts and Nevis</option>
+			<option value="Saint Lucia">سنت لوسیا 🇱🇨 Saint Lucia</option>
+			<option value="Saint Vincent and the Grenadines">سنت وینسنت و گرنادین‌ها 🇻🇨 Saint Vincent and the Grenadines</option>
+			<option value="Samoa">ساموا 🇼🇸 Samoa</option>
+			<option value="San Marino">سان مارینو 🇸🇲 San Marino</option>
+			<option value="Sao Tome and Principe">سائوتومه و پرینسیپ 🇸🇹 Sao Tome and Principe</option>
+			<option value="Saudi Arabia">عربستان سعودی 🇸🇦 Saudi Arabia</option>
+			<option value="Senegal">سنگال 🇸🇳 Senegal</option>
+			<option value="Serbia">صربستان 🇷🇸 Serbia</option>
+			<option value="Seychelles">سیشل 🇸🇨 Seychelles</option>
+			<option value="Sierra Leone">سیرالئون 🇸🇱 Sierra Leone</option>
+			<option value="Singapore">سنگاپور 🇸🇬 Singapore</option>
+			<option value="Slovakia">اسلواکی 🇸🇰 Slovakia</option>
+			<option value="Slovenia">اسلوونی 🇸🇮 Slovenia</option>
+			<option value="Solomon Islands">جزایر سلیمان 🇸🇧 Solomon Islands</option>
+			<option value="Somalia">سومالی 🇸🇴 Somalia</option>
+			<option value="South Africa">آفریقای جنوبی 🇿🇦 South Africa</option>
+			<option value="South Korea">کره جنوبی 🇰🇷 South Korea</option>
+			<option value="South Sudan">سودان جنوبی 🇸🇸 South Sudan</option>
+			<option value="Spain">اسپانیا 🇪🇸 Spain</option>
+			<option value="Sri Lanka">سری‌لانکا 🇱🇰 Sri Lanka</option>
+			<option value="Sudan">سودان 🇸🇩 Sudan</option>
+			<option value="Suriname">سورینام 🇸🇷 Suriname</option>
+			<option value="Sweden">سوئد 🇸🇪 Sweden</option>
+			<option value="Switzerland">سوئیس 🇨🇭 Switzerland</option>
+			<option value="Syria">سوریه 🇸🇾 Syria</option>
+			<option value="Tajikistan">تاجیکستان 🇹🇯 Tajikistan</option>
+			<option value="Tanzania">تانزانیا 🇹🇿 Tanzania</option>
+			<option value="Thailand">تایلند 🇹🇭 Thailand</option>
+			<option value="Timor-Leste">تیمور شرقی 🇹🇱 Timor-Leste</option>
+			<option value="Togo">توگو 🇹🇬 Togo</option>
+			<option value="Tonga">تونگا 🇹🇴 Tonga</option>
+			<option value="Trinidad and Tobago">ترینیداد و توباگو 🇹🇹 Trinidad and Tobago</option>
+			<option value="Tunisia">تونس 🇹🇳 Tunisia</option>
+			<option value="Turkey">ترکیه 🇹🇷 Turkey</option>
+			<option value="Turkmenistan">ترکمنستان 🇹🇲 Turkmenistan</option>
+			<option value="Tuvalu">تووالو 🇹🇻 Tuvalu</option>
+			<option value="Uganda">اوگاندا 🇺🇬 Uganda</option>
+			<option value="Ukraine">اوکراین 🇺🇦 Ukraine</option>
+			<option value="United Arab Emirates">امارات متحده عربی 🇦🇪 United Arab Emirates</option>
+			<option value="United Kingdom">بریتانیا 🇬🇧 United Kingdom</option>
+			<option value="United States">ایالات متحده 🇺🇸 United States</option>
+			<option value="Uruguay">اروگوئه 🇺🇾 Uruguay</option>
+			<option value="Uzbekistan">ازبکستان 🇺🇿 Uzbekistan</option>
+			<option value="Vanuatu">وانواتو 🇻🇺 Vanuatu</option>
+			<option value="Venezuela">ونزوئلا 🇻🇪 Venezuela</option>
+			<option value="Vietnam">ویتنام 🇻🇳 Vietnam</option>
+			<option value="Yemen">یمن 🇾🇪 Yemen</option>
+			<option value="Zambia">زامبیا 🇿🇲 Zambia</option>
+			<option value="Zimbabwe">زیمبابوه 🇿🇼 Zimbabwe</option>
+			
+          </select>
+          <button id="get-config" class="btn btn-primary btn-lg d-block mx-auto" onclick="fetchConfigs()">دریافت کانفیگ</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<style>
+    .custom-card {
+        height: 350px; /* Adjust as needed */
+    }
+    
+    .custom-textarea {
+        height: 250px; /* Adjust as needed */
+    }
+</style>
+
+<div class="row justify-content-center mt-4">
+    <div class="col-md-6">
+        <div class="card custom-card">
+            <header class="card-header">
+                <h5 class="card-title center-text"  id="config-title" style="margin-top: 10px;" >نمایش کانفیگ</h5>
+            </header>
+            <div class="card-body">
+                <div class="position-relative">
+                    <textarea id="config-output" class="form-control custom-textarea" rows="5" readonly></textarea>
+                    <button id="copy-config" class="btn btn-secondary copy-button" style="width: 100px; margin-right: 10px; opacity: 1;">کپی</button>
+
+
+  <span id="ss-trojan-counts"></span>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row justify-content-center mt-4 mb-5">
+    <div class="col-md-6">
+      <div class="card">
+        <header class="card-header">
+          <h5 class="card-title center-text">درباره</h5>
+        </header>
+        <div class="card-body">
+
+<p class="right-align" style="line-height: 2; margin-bottom: 30px;">
+
+این وب سایت برای کمک به دور زدن فیلترینگ ساخته شده
+<br>
+سرور ها هر چند ساعت آپدیت می‌شن
+<br>
+<center>
+
+
+
+
+
+<center>
+<br>
+
+<span style="font-size: smaller; text-align: center; display: block; margin-top: 10px;">
+   <script>
+    var textChunks = [
+        "Made with ",
+        "💜",
+        "  3λΞĐ"
+    ];
+    for (var i = 0; i < textChunks.length; i++) {
+        document.write(textChunks[i]);
+    }
+</script>
+</span>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script> 
+<script src="scrypt.js"></script>
+</body>
+</html>
